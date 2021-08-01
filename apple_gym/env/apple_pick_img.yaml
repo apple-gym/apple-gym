@@ -1,0 +1,97 @@
+max_episode_steps: 200
+action_repeat: 1
+
+plane:
+    model: data/models/dirt_plane/dirt_textured.urdf
+
+tree:
+    addon: fruit_tree
+    source_model: robot
+    max_fruit: 75
+    debug: 1
+    max_twigs: 150
+    vary_colors: 1
+    model_folders:
+        - data/models/tree_01
+        - data/models/tree_02
+        - data/models/tree_03
+        - data/models/tree_04
+        - data/models/tree_05
+        - data/models/tree_06
+        # - data/models/tree_07
+        # - data/models/tree_08
+        # - data/models/tree_00
+        # - data/models/tree_11
+        # - data/models/tree_12
+        # - data/models/tree_13
+        # - data/models/tree_14
+        # - data/models/tree_15
+
+
+husky:
+    # TODO for decoration now, we could make it move, and joint it to the robot
+    model: data/models/husky/husky.urdf
+    URDF_MERGE_FIXED_LINKS: true
+    use_fixed_base: true
+    xyz: [0, 0, .0]
+
+robot:
+    model: data/models/ur5controller/ur5_2f_picker.urdf
+    URDF_USE_SELF_COLLISION_EXCLUDE_PARENT: true
+    # URDF_USE_MATERIAL_COLORS_FROM_MTL: true
+    use_fixed_base: true
+    xyz: [0, 0, .0]
+
+    # pose_gripper:
+    #     # absolute pose
+    #     addon: object_state_sensor
+    #     target_frame: ee_link
+    #     include_rotation: true
+    #     include_torque: true
+    #     include_velocity: true
+
+    # joint_state:
+    #     # joint positions
+    #     addon: joint_state_sensor
+    #     include_velocity: true
+    #     include_reaction: true
+    #     include_effort: true
+    #     joints:
+    #     - shoulder_pan_joint
+    #     - shoulder_lift_joint
+    #     - elbow_joint
+    #     - wrist_1_joint
+    #     - wrist_2_joint
+    #     - wrist_3_joint
+
+    controller:
+        addon: joint_controller
+        control_mode: torque
+        reset_range: [3.14, 0.4, 0.4, 0.4, 0.4, 3.14]
+        rest_position: [0, 0, 0, 0, 0, 0]
+        # position_gain: 0.016
+        # velocity_gain: 0.01
+        joints:
+        - shoulder_pan_joint
+        - shoulder_lift_joint
+        - elbow_joint
+        - wrist_1_joint
+        - wrist_2_joint
+        - wrist_3_joint
+
+    debug:
+        addon: joint_trace
+        joints:
+        - ee_joint
+
+
+base_camera:
+    # camera makes 2x slower, depending on size
+    addon: camera
+    source_model: robot
+    frame: base_camera_joint
+    target_model: robot
+    target_frame: ee_joint
+    field_of_view: 50
+    resolution: [64, 64]
+    use_depth: true

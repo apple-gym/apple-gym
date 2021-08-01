@@ -1,0 +1,71 @@
+max_episode_steps: 200
+action_repeat: 1
+
+plane:
+    model: data/models/dirt_plane/dirt_textured.urdf
+
+tree:
+    addon: fruit_tree
+    source_model: robot
+    picking_tolerance: 0.06
+    max_fruit: 150
+    max_twigs: 300
+    vary_colors: 0
+    
+    model_folders:
+        - data/models/tree_02
+
+robot:
+    model: data/models/ur5controller/ur5_2f_picker.urdf
+    URDF_USE_SELF_COLLISION_EXCLUDE_PARENT: true
+    # URDF_USE_MATERIAL_COLORS_FROM_MTL: true
+    use_fixed_base: true
+    xyz: [0, 0, .0]
+
+    pose_gripper:
+        addon: object_state_sensor
+        target_frame: ee_link
+        include_rotation: true
+        include_velocity: true
+
+    joint_state:
+        addon: joint_state_sensor
+        include_velocity: true
+        include_effort: true
+
+    arm_camera:
+        # camera makes 2x slower, depending on size
+        addon: camera
+        frame: arm_camera_joint
+        field_of_view: 70
+        resolution: [224, 224]
+        use_depth: true
+        # features make it 5x slower, without cuda
+        use_grconvnet3: true
+        # use_features: true
+
+    base_camera:
+        # camera makes 2x slower, depending on size
+        addon: camera
+        frame: base_camera_joint
+        field_of_view: 120
+        resolution: [224, 224]
+        use_depth: true
+        # features make it 5x slower, without cuda
+        use_grconvnet3: true
+        # use_features: true
+
+    controller:
+        addon: joint_controller
+        control_mode: position
+        reset_range: [3.14, 0.4, 0.4, 0.4, 0.4, 3.14]
+        rest_position: [0, 0, 0, 0, 0, 0]
+        position_gain: 0.016
+        velocity_gain: 0.01
+        joints:
+        - shoulder_pan_joint
+        - shoulder_lift_joint
+        - elbow_joint
+        - wrist_1_joint
+        - wrist_2_joint
+        - wrist_3_joint

@@ -1,0 +1,486 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find ur_description)/urdf/ur5.transmission.xacro" />
+  <xacro:include filename="$(find ur_description)/urdf/ur5.gazebo.xacro" />
+
+  <xacro:property name="pi" value="3.14159265" />
+
+  <!-- Inertia parameters -->
+  <xacro:property name="base_mass" value="4.0" />  <!-- This mass might be incorrect -->
+  <xacro:property name="shoulder_mass" value="3.7000" />
+  <xacro:property name="upper_arm_mass" value="8.3930" />
+  <xacro:property name="forearm_mass" value="2.2750" />
+  <xacro:property name="wrist_1_mass" value="1.2190" />
+  <xacro:property name="wrist_2_mass" value="1.2190" />
+  <xacro:property name="wrist_3_mass" value="0.1879" />
+
+  <xacro:property name="shoulder_cog" value="0.0 0.00193 -0.02561" />
+  <xacro:property name="upper_arm_cog" value="0.0 -0.024201 0.2125" />
+  <xacro:property name="forearm_cog" value="0.0 0.0265 0.11993" />
+  <xacro:property name="wrist_1_cog" value="0.0 0.110949 0.01634" />
+  <xacro:property name="wrist_2_cog" value="0.0 0.0018 0.11099" />
+  <xacro:property name="wrist_3_cog" value="0.0 0.001159 0.0" />
+
+  <!-- Kinematic model -->
+  <!-- Properties from urcontrol.conf -->
+  <!--
+    DH for UR5:
+    a = [0.00000, -0.42500, -0.39225,  0.00000,  0.00000,  0.0000]
+    d = [0.089159,  0.00000,  0.00000,  0.10915,  0.09465,  0.0823]
+    alpha = [ 1.570796327, 0, 0, 1.570796327, -1.570796327, 0 ]
+    q_home_offset = [0, -1.570796327, 0, -1.570796327, 0, 0]
+    joint_direction = [-1, -1, 1, 1, 1, 1]
+    mass = [3.7000, 8.3930, 2.2750, 1.2190, 1.2190, 0.1879]
+    center_of_mass = [ [0, -0.02561, 0.00193], [0.2125, 0, 0.11336], [0.11993, 0.0, 0.0265], [0, -0.0018, 0.01634], [0, 0.0018,0.01634], [0, 0, -0.001159] ]
+  -->
+  <xacro:property name="ur5_d1" value="0.089159" />
+  <xacro:property name="ur5_a2" value="-0.42500" />
+  <xacro:property name="ur5_a3" value="-0.39225" />
+  <xacro:property name="ur5_d4" value="0.10915" />
+  <xacro:property name="ur5_d5" value="0.09465" />
+  <xacro:property name="ur5_d6" value="0.0823" />
+
+  <!-- Arbitrary offsets for shoulder/elbow joints -->
+  <xacro:property name="shoulder_offset" value="0.13585" />  <!-- measured from model -->
+  <xacro:property name="elbow_offset" value="-0.1197" /> <!-- measured from model -->       
+
+  <!-- link lengths used in model -->
+  <xacro:property name="shoulder_height" value="${ur5_d1}" />
+  <xacro:property name="upper_arm_length" value="${-ur5_a2}" />
+  <xacro:property name="forearm_length" value="${-ur5_a3}" />
+  <xacro:property name="wrist_1_length" value="${ur5_d4 - elbow_offset - shoulder_offset}" />
+  <xacro:property name="wrist_2_length" value="${ur5_d5}" />
+  <xacro:property name="wrist_3_length" value="${ur5_d6}" />
+  <!--property name="shoulder_height" value="0.089159" /-->  
+  <!--property name="shoulder_offset" value="0.13585" /-->  <!-- shoulder_offset - elbow_offset + wrist_1_length = 0.10915 -->
+  <!--property name="upper_arm_length" value="0.42500" /-->
+  <!--property name="elbow_offset" value="0.1197" /-->       <!-- CAD measured -->
+  <!--property name="forearm_length" value="0.39225" /-->
+  <!--property name="wrist_1_length" value="0.093" /-->     <!-- CAD measured -->
+  <!--property name="wrist_2_length" value="0.09465" /-->   <!-- In CAD this distance is 0.930, but in the spec it is 0.09465 -->
+  <!--property name="wrist_3_length" value="0.0823" /-->
+
+  <xacro:property name="shoulder_radius" value="0.060" />   <!-- manually measured -->
+  <xacro:property name="upper_arm_radius" value="0.054" />  <!-- manually measured -->
+  <xacro:property name="elbow_radius" value="0.060" />      <!-- manually measured -->
+  <xacro:property name="forearm_radius" value="0.040" />    <!-- manually measured -->
+  <xacro:property name="wrist_radius" value="0.045" />      <!-- manually measured -->
+
+  <xacro:property name="damping" value="0.0" />
+  <xacro:property name="friction" value="0.0" />
+
+  <xacro:macro name="cylinder_inertial" params="radius length mass *origin">
+    <inertial>
+      <mass value="${mass}" />
+      <xacro:insert_block name="origin" />
+      <inertia ixx="${0.0833333 * mass * (3 * radius * radius + length * length)}" ixy="0.0" ixz="0.0"
+        iyy="${0.0833333 * mass * (3 * radius * radius + length * length)}" iyz="0.0"
+        izz="${0.5 * mass * radius * radius}" />
+    </inertial>
+  </xacro:macro>
+
+
+  <xacro:macro name="ur5_robot" params="prefix joint_limited">
+
+    <link name="${prefix}stand">
+      <visual>
+        <origin rpy="0 0 0" xyz="0. 0.0 0.0"/>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/arm_stand.obj"/>
+        </geometry>
+        <material name="blue">
+          <color rgba="0.3 0.43 0.512 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/arm_stand.obj"/>
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="${base_mass}"/>
+        <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+        <inertia ixx="0.00443333156" ixy="0.0" ixz="0.0" iyy="0.00443333156" iyz="0.0" izz="0.0072"/>
+      </inertial>
+    </link>
+  
+    <joint name="${prefix}stand_joints" type="fixed">
+      <parent link="${prefix}stand"/>
+      <child link="${prefix}base_link"/>
+      <origin rpy="0.0 0.0 0.0" xyz="0.0 0.0 0.5"/>
+      <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="${prefix}base_link" >
+      <visual>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/base.obj" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0.07 0.07 0.07 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/collision/base.stl" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.06" length="0.05" mass="${base_mass}">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="${prefix}shoulder_pan_joint" type="revolute">
+      <parent link="${prefix}base_link" />
+      <child link = "${prefix}shoulder_link" />
+      <origin xyz="0.0 0.0 ${shoulder_height}" rpy="0.0 0.0 0.0" />
+      <axis xyz="0 0 1" />
+      <xacro:unless value="${joint_limited}">
+        <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="${150.0 * spd}" velocity="3.15"/>
+      </xacro:unless>
+      <xacro:if value="${joint_limited}">
+        <limit lower="${-pi}" upper="${pi}" effort="${150.0 * spd}" velocity="3.15"/>
+      </xacro:if>
+      <dynamics damping="${damping}" friction="${friction}"/>
+    </joint>
+    
+    <link name="${prefix}shoulder_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/shoulder.obj" />
+        </geometry>
+        <material name="blue">
+          <color rgba="0.3 0.43 0.512 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/collision/shoulder.stl" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.06" length="0.15" mass="${shoulder_mass}">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="${prefix}shoulder_lift_joint" type="revolute">
+      <parent link="${prefix}shoulder_link" />
+      <child link = "${prefix}upper_arm_link" />
+      <origin xyz="0.0 ${shoulder_offset} 0.0" rpy="0.0 ${pi / 2.0} 0.0" />    
+      <axis xyz="0 1 0" />
+      <xacro:unless value="${joint_limited}">
+        <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="${150.0 * spd}" velocity="3.15"/>
+      </xacro:unless>
+      <xacro:if value="${joint_limited}">
+        <limit lower="${-pi}" upper="${pi}" effort="${150.0 * spd}" velocity="3.15"/>
+      </xacro:if>
+      <dynamics damping="${damping}" friction="${friction}"/>
+    </joint>
+
+    <link name="${prefix}upper_arm_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/upperarm.obj" />
+        </geometry>
+        <material name="blue">
+          <color rgba="0.3 0.43 0.512 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/collision/upper_arm.stl" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.06" length="0.56" mass="${upper_arm_mass}">
+        <origin xyz="0.0 0.0 0.28" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="${prefix}elbow_joint" type="revolute">
+      <parent link="${prefix}upper_arm_link" />
+      <child link = "${prefix}forearm_link" />
+      <origin xyz="0.0 ${elbow_offset} ${upper_arm_length}" rpy="0.0 0.0 0.0" />
+      <axis xyz="0 1 0" />
+      <xacro:unless value="${joint_limited}">
+        <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="${150.0 * spd}" velocity="3.15"/>
+      </xacro:unless>
+      <xacro:if value="${joint_limited}">
+        <limit lower="${-pi}" upper="${pi}" effort="${150.0 * spd}" velocity="3.15"/>
+      </xacro:if>
+      <dynamics damping="${damping}" friction="${friction}"/>
+    </joint>
+
+    <link name="${prefix}forearm_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/forearm.obj" />
+        </geometry>
+        <material name="blue">
+          <color rgba="0.3 0.43 0.512 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/collision/forearm.stl" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.06" length="0.5" mass="${forearm_mass}">
+        <origin xyz="0.0 0.0 0.25" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="${prefix}wrist_1_joint" type="revolute">
+      <parent link="${prefix}forearm_link" />
+      <child link = "${prefix}wrist_1_link" />
+      <origin xyz="0.0 0.0 ${forearm_length}" rpy="0.0 ${pi / 2.0} 0.0" />
+      <axis xyz="0 1 0" />
+      <xacro:unless value="${joint_limited}">
+        <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="${28.0 * spd}" velocity="3.2"/>
+      </xacro:unless>
+      <xacro:if value="${joint_limited}">
+        <limit lower="${-pi}" upper="${pi}" effort="${28.0 * spd}" velocity="3.2"/>
+      </xacro:if>
+      <dynamics damping="${damping}" friction="${friction}"/>
+    </joint>
+
+    <link name="${prefix}wrist_1_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/wrist1.obj" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/collision/wrist_1.stl" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.6" length="0.12" mass="${wrist_1_mass}">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="${prefix}wrist_2_joint" type="revolute">
+      <parent link="${prefix}wrist_1_link" />
+      <child link = "${prefix}wrist_2_link" />
+      <origin xyz="0.0 ${wrist_1_length} 0.0" rpy="0.0 0.0 0.0" />
+      <axis xyz="0 0 1" />
+      <xacro:unless value="${joint_limited}">
+        <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="${28.0 * spd}" velocity="3.2"/>
+      </xacro:unless>
+      <xacro:if value="${joint_limited}">
+        <limit lower="${-pi}" upper="${pi}" effort="${28.0 * spd}" velocity="3.2"/>
+      </xacro:if>
+      <dynamics damping="${damping}" friction="${friction}"/>
+    </joint>
+
+    <link name="${prefix}wrist_2_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/wrist2.obj" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/collision/wrist_2.stl" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.6" length="0.12" mass="${wrist_2_mass}">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="${prefix}wrist_3_joint" type="revolute">
+      <parent link="${prefix}wrist_2_link" />
+      <child link = "${prefix}wrist_3_link" />
+      <origin xyz="0.0 0.0 ${wrist_2_length}" rpy="0.0 0.0 0.0" />
+      <axis xyz="0 1 0" />
+      <xacro:unless value="${joint_limited}">
+        <limit lower="${-2.0 * pi}" upper="${2.0 * pi}" effort="${28.0 * spd}" velocity="3.2"/>
+      </xacro:unless>
+      <xacro:if value="${joint_limited}">
+        <limit lower="${-pi}" upper="${pi}" effort="${28.0 * spd}" velocity="3.2"/>
+      </xacro:if>
+      <dynamics damping="${damping}" friction="${friction}"/>
+    </joint>
+
+    <link name="${prefix}wrist_3_link">
+      <visual>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/visual/wrist3.obj" />
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <geometry>
+          <mesh filename="package://ur5controller/arm/meshes/collision/wrist_3.stl" />
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.6" length="0.12" mass="${wrist_3_mass}">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+    
+    <joint name="${prefix}ee_fixed_joint" type="fixed">
+      <parent link="${prefix}wrist_3_link" />
+      <child link = "${prefix}ee_link0" />
+      <origin xyz="0.0 ${wrist_3_length} 0.0" rpy="0.0 0.0 ${pi/2.0}" />
+    </joint>
+
+    <link name="${prefix}ee_link0">
+      <collision>
+        <geometry>
+          <box size="0.01 0.01 0.01"/>
+        </geometry>
+        <origin rpy="0 0 0" xyz="-0.01 0 0"/>
+      </collision>
+    </link>
+
+    <xacro:ur5_arm_transmission prefix="${prefix}" />
+    <xacro:ur5_arm_gazebo prefix="${prefix}" />
+
+
+    <!-- ===================================================================  -->
+    <!--                     CUSTOM PICKER                                    -->
+    <!-- ===================================================================  -->
+    <xacro:property name="ur5_d7" value="0.6" />
+    <xacro:property name="ur5_d8" value="0.01" />
+    <xacro:property name="pole_length" value="${ur5_d7}" />
+    <xacro:property name="pole_radius" value="${ur5_d7}" />
+
+    <joint name="Gripper_Adapter_Fix" type="fixed">
+      <parent link="ee_link0"/>
+      <child link="simple_picker_pole"/>
+      <origin rpy="0.0 0 0.0" xyz="0.0 0.0 0.0"/>
+    </joint>
+
+    <link name="simple_picker_pole">
+      <visual>
+        <origin rpy="0 ${pi/2} 0" xyz="${pole_length/2} 0.0 0.0"/>
+        <geometry name="pole">
+          <cylinder length="${pole_length}" radius="${pole_radius}"/>
+        </geometry>
+        <material name="LightGrey">
+          <color rgba="0.7 0.7 0.7 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 ${pi/2} 0" xyz="${pole_length/2} 0.0 0.0"/>
+        <geometry name="pole">
+          <cylinder length="${pole_length}" radius="${pole_radius}"/>
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="${pole_radius}" length="${pole_length}" mass="0.1879">
+        <origin xyz="0.0 0.0 0.25" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="joint_simple_picker_pole" type="fixed">
+      <parent link="simple_picker_pole"/>
+      <child link="simple_picker_tool"/>
+      <origin rpy="0 ${pi} 0" xyz="${pole_length} 0.0 0.0"/>
+    </joint>
+
+    <link name="simple_picker_tool">
+      <visual>
+        <geometry>
+          <mesh filename="package://picker/picker2.dae" scale=".33 .33 .33"/>
+        </geometry>
+        <material name="Grey">
+          <color rgba="0.5 0.5 0.5 1.0"/>
+        </material>
+      </visual>
+      <collision concave="yes">
+        <!-- <origin rpy="0 0 0" xyz="0 0 0.015"/> -->
+        <geometry>      
+          <!-- <mesh filename="package://picker/picker_collision.dae" scale=".25 .25 .25"/> -->
+          <mesh filename="package://picker/picker2.dae" scale=".33 .33 .33"/>
+        </geometry>
+      </collision>
+      <xacro:cylinder_inertial radius="0.14" length="0.14" mass="0.1879">
+        <origin xyz="0.0 0.0 0.25" rpy="0 0 0" />
+      </xacro:cylinder_inertial>
+    </link>
+
+    <joint name="ee_joint" type="fixed">
+      <parent link="simple_picker_tool"/>
+      <child link="ee_link"/>
+      <origin rpy="0.0 0 0" xyz="-0.07 0 0"/>
+    </joint>
+
+    <link name="ee_link">
+      <!-- This is in the center of the hoop -->
+        <!-- DEBUG VISUAL -->
+        <visual>
+          <origin rpy="0 0 0" xyz="0.0 0.0 -0.005"/>
+          <geometry>
+            <cylinder length="0.01" radius="0.005"/>
+          </geometry>
+          <material name="blue">
+            <color rgba="0.3 0.0 0.9 1.0"/>
+          </material>
+        </visual>
+    </link>
+
+  <joint name="arm_camera_joint" type="fixed">
+      <parent link="ee_link0"/>
+      <child link="arm_camera_link"/>
+      <!-- attach camera here, points at picker -->
+      <origin rpy="0 -1.57 0" xyz="-0.02 0.05 0"/>
+    </joint>
+    <link name="arm_camera_link">
+      <!-- This visual of camera -->
+        <inertial>
+            <mass value="0.018"/>
+            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+        </inertial>
+        <!-- DEBUG VISUAL -->
+        <visual>
+          <origin rpy="0 0 0" xyz="0.00 0.0 0.01"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.02"/>
+          </geometry>
+          <material name="black">
+            <color rgba="0.1 0.1 0.1 1.0"/>
+          </material>
+        </visual>
+    </link>
+
+
+
+
+  <joint name="base_camera_joint" type="fixed">
+      <parent link="base_link"/>
+      <!-- or base of stand ? -->
+      <child link="base_camera_link"/>
+      <!-- attach camera here, points at picker -->
+      <origin rpy="0 3.14 0" xyz="-0.00 0.00 0.18"/>
+    </joint>
+    <link name="base_camera_link">
+      <!-- This visual of camera -->
+        <inertial>
+            <mass value="0.018"/>
+            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+        </inertial>
+        <!-- DEBUG VISUAL -->
+        <visual>
+          <origin rpy="0 0 0" xyz="0.00 0.0 0.01"/>
+          <geometry>
+            <cylinder length="0.04" radius="0.02"/>
+          </geometry>
+          <material name="black">
+            <color rgba="0.1 0.1 0.1 1.0"/>
+          </material>
+        </visual>
+    </link>
+
+  </xacro:macro>
+</robot>

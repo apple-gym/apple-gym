@@ -1,0 +1,29 @@
+name: diygym
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python==3.7
+  - gym==0.17.2
+  - numpy
+  - wandb
+  - matplotlib
+  - pip
+  - tqdm
+  - pillow
+  - pandas==1.1.0
+  - scipy
+  - pytorch==1.9.0
+  - torchvision
+  # - torchaudio
+  - cudatoolkit
+  # - tensorboard
+  - pytransform3d==1.9.1
+  - pip:
+    - flatten-dict
+    - pybullet-planning==0.5.1
+    - pybullet==3.0.7
+    - loguru
+    - colour
+prefix: /home/wassname/miniforge3/envs/diygym
