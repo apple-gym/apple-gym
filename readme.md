@@ -4,11 +4,7 @@
 
 A RL gym environment for picking apples from a tree with a fruit picking attachement
 
-![](docs/Kazam_screencast_00016.webm)
-
-![](docs/picked.mp4)
-
-  <img src="docs/picked.fig" height="210" />
+  <img src="docs/picked.gif" height="210" />
   <img src="https://github.com/apple-gym/apple_gym/blob/main/docs/picked.gif?raw=true" height="410" /> 
 
 https://imgur.com/a/Vq2eXui
