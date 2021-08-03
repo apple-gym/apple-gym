@@ -25,7 +25,7 @@ git clone https://github.com/apple-gym/diy-gym.git
 pip install -e diy-gym
 
 # and the main repo
-pip install -e apple_gym
+pip install -e apple-gym
 
 # test
 cd apple_gym
