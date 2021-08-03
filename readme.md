@@ -1,6 +1,6 @@
 # apple-gym
 
-*Warning: This code is messy. It's not intended to be easy to run, and I probobly wont have time to help you run it. It's shared in the hope that it will help someone, but that someone will have to be a good python programmer. If you like it, please help make it better by submitting a PR with documentation of improvement.*
+*Warning: This code is messy. It's not intended to be easy to run, and I probobly wont have time to help you run it. It's shared in the hope that it will help someone, but that someone will have to be a good python programmer. If you have problems, make a well documented issue. If you like it, please help make it better by submitting a PR or contributing docs.*
 
 A RL gym environment for picking apples from a tree with a fruit picking attachement
 
