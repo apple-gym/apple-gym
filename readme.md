@@ -12,8 +12,9 @@ https://imgur.com/a/Vq2eXui
 # Setup
 
 ```sh
+git clone https://github.com/apple-gym/apple-gym.git
 # make a conda environment
-conda env create --file requirements/environment.yaml
+conda env create --file apple-gym/requirements/environment.yaml
 
 # and the project repos, first a modified version of gym recording
 git clone https://github.com/wassname/gym-recording-modified.git
@@ -24,7 +25,6 @@ git clone https://github.com/apple-gym/diy-gym.git
 pip install -e diy-gym
 
 # and the main repo
-git clone https://github.com/apple-gym/apple_gym.git
 pip install -e apple_gym
 
 # test
