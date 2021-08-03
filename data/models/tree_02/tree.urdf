@@ -1,0 +1,1905 @@
+
+<?xml version="1.0"?>
+<robot name="myfirst">
+
+    <link name="world" />
+
+    <joint name="fixed_to_ground" type="fixed">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <parent link="world" />
+      <child link="trunk" />
+    </joint>
+
+    <link name="trunk">
+      <visual>
+        <geometry>
+          <mesh filename="data/models/tree_02/tree_Hornbeam.obj" scale="2 2 2"/>
+        </geometry>
+        <material name="brown">
+            <color rgba="0.2 0.12 0.06 1.0"/>
+        </material>
+      </visual>
+      <collision concave="yes">
+        <geometry>
+          <mesh filename="data/models/tree_02/tree_Hornbeam.obj" scale="2 2 2"/>?
+        </geometry>
+      </collision>
+    </link>
+
+                <link name="twig_link_0_0_SmallTwig_0">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_0_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig0" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_0" />      
+                    <origin xyz="-0.01 0.23 3.09" rpy="0.19 -1.43 1.25" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_0">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig0" type="fixed">
+                        <origin xyz="-0.01 0.23 3.09"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_0" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_1">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_1_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig1" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_1" />      
+                    <origin xyz="1.22 -0.06 1.17" rpy="0.15 -0.72 -0.27" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_1">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig1" type="fixed">
+                        <origin xyz="1.22 -0.06 1.17"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_1" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_2">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_2_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig2" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_2" />      
+                    <origin xyz="0.75 0.41 1.45" rpy="0.12 -0.70 0.69" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_2">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig2" type="fixed">
+                        <origin xyz="0.75 0.41 1.45"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_2" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_3">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_3_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig3" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_3" />      
+                    <origin xyz="0.53 -0.11 1.35" rpy="0.19 -0.90 -1.21" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_3">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig3" type="fixed">
+                        <origin xyz="0.53 -0.11 1.35"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_3" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_4">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_4_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig4" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_4" />      
+                    <origin xyz="0.67 -0.31 0.98" rpy="0.02 -0.31 -1.24" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_5">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_5_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig5" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_5" />      
+                    <origin xyz="0.95 0.33 0.89" rpy="0.21 -0.07 0.99" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_6">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_6_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig6" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_6" />      
+                    <origin xyz="-0.95 1.24 1.20" rpy="0.23 -0.30 2.22" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_7">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_7_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig7" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_7" />      
+                    <origin xyz="-0.66 -0.30 1.24" rpy="0.21 -0.39 -2.10" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_7">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig7" type="fixed">
+                        <origin xyz="-0.66 -0.30 1.24"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_7" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_8">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_8_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig8" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_8" />      
+                    <origin xyz="-0.61 0.26 1.24" rpy="0.30 -0.53 2.65" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_8">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig8" type="fixed">
+                        <origin xyz="-0.61 0.26 1.24"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_8" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_9">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_9_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig9" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_9" />      
+                    <origin xyz="-0.11 0.92 1.78" rpy="0.26 -1.02 1.38" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_9">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig9" type="fixed">
+                        <origin xyz="-0.11 0.92 1.78"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_9" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_10">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_10_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig10" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_10" />      
+                    <origin xyz="-0.19 0.82 1.18" rpy="0.14 0.09 1.41" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_11">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_11_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig11" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_11" />      
+                    <origin xyz="-0.38 0.55 1.69" rpy="0.16 -1.12 -2.96" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_11">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig11" type="fixed">
+                        <origin xyz="-0.38 0.55 1.69"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_11" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_12">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_12_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig12" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_12" />      
+                    <origin xyz="-0.65 0.72 0.93" rpy="0.03 0.31 2.27" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_13">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_13_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig13" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_13" />      
+                    <origin xyz="-0.72 0.62 1.45" rpy="0.28 -1.06 -3.09" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_13">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig13" type="fixed">
+                        <origin xyz="-0.72 0.62 1.45"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_13" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_14">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_14_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig14" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_14" />      
+                    <origin xyz="-0.42 1.11 1.11" rpy="0.22 -0.08 1.07" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_15">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_15_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig15" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_15" />      
+                    <origin xyz="-0.01 -1.28 2.01" rpy="0.22 -0.76 -1.43" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_15">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig15" type="fixed">
+                        <origin xyz="-0.01 -1.28 2.01"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_15" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_16">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_16_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig16" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_16" />      
+                    <origin xyz="0.71 -0.24 1.84" rpy="0.08 -0.79 -0.14" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_16">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig16" type="fixed">
+                        <origin xyz="0.71 -0.24 1.84"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_16" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_17">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_17_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig17" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_17" />      
+                    <origin xyz="0.28 -0.48 1.50" rpy="0.18 -0.31 -1.16" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_18">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_18_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig18" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_18" />      
+                    <origin xyz="0.45 0.13 1.63" rpy="0.22 -0.39 1.13" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_18">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig18" type="fixed">
+                        <origin xyz="0.45 0.13 1.63"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_18" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_19">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_19_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig19" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_19" />      
+                    <origin xyz="-0.57 -0.43 2.16" rpy="0.20 -1.14 -2.82" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_19">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig19" type="fixed">
+                        <origin xyz="-0.57 -0.43 2.16"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_19" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_20">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_20_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig20" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_20" />      
+                    <origin xyz="-0.57 -0.32 1.56" rpy="0.18 -0.07 3.13" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_21">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_21_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig21" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_21" />      
+                    <origin xyz="-0.19 -0.63 1.93" rpy="0.09 -0.68 -1.16" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_21">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig21" type="fixed">
+                        <origin xyz="-0.19 -0.63 1.93"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_21" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_22">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_22_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig22" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_22" />      
+                    <origin xyz="0.08 -0.84 1.39" rpy="0.13 0.17 -1.17" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_23">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_23_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig23" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_23" />      
+                    <origin xyz="0.04 -0.65 1.96" rpy="0.24 -1.39 -0.25" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_23">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig23" type="fixed">
+                        <origin xyz="0.04 -0.65 1.96"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_23" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_24">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_24_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig24" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_24" />      
+                    <origin xyz="-0.36 -1.05 1.71" rpy="0.08 -0.13 -2.51" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_25">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_25_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig25" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_25" />      
+                    <origin xyz="0.49 0.81 1.82" rpy="0.00 -0.59 0.89" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_25">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig25" type="fixed">
+                        <origin xyz="0.49 0.81 1.82"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_25" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_26">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_26_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig26" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_26" />      
+                    <origin xyz="0.44 0.15 1.56" rpy="0.20 -0.19 -0.14" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_27">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_27_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig27" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_27" />      
+                    <origin xyz="-0.03 0.69 1.59" rpy="0.04 -0.10 2.26" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_28">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_28_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig28" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_28" />      
+                    <origin xyz="-0.85 0.63 1.77" rpy="0.29 -0.23 2.41" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_29">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_29_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig29" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_29" />      
+                    <origin xyz="-0.50 0.28 1.48" rpy="0.28 0.57 2.74" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_29">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig29" type="fixed">
+                        <origin xyz="-0.50 0.28 1.48"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_29" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_30">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_30_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig30" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_30" />      
+                    <origin xyz="-0.61 0.21 2.04" rpy="0.17 -1.01 -2.80" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_30">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig30" type="fixed">
+                        <origin xyz="-0.61 0.21 2.04"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_30" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_31">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_31_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig31" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_31" />      
+                    <origin xyz="0.32 -0.43 2.27" rpy="0.13 -0.79 -0.59" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_31">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig31" type="fixed">
+                        <origin xyz="0.32 -0.43 2.27"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_31" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_32">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_32_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig32" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_32" />      
+                    <origin xyz="-0.19 -0.40 1.90" rpy="0.27 -0.00 -2.06" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_33">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_33_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig33" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_33" />      
+                    <origin xyz="0.19 0.43 2.17" rpy="0.07 -0.17 0.87" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_0_0_SmallTwig_34">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_34_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig34" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_34" />      
+                    <origin xyz="-0.39 0.02 2.49" rpy="0.27 -0.55 -2.80" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_34">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig34" type="fixed">
+                        <origin xyz="-0.39 0.02 2.49"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_34" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_0_0_SmallTwig_35">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="0_0_SmallTwig_35_green">
+                            <color rgba="0.38 0.54 0.24 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_0_0_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_0_0_SmallTwig35" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_0_0_SmallTwig_35" />      
+                    <origin xyz="0.31 -0.01 2.63" rpy="0.08 -0.37 -0.42" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_0_0_SmallTwig_35">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_0_0_SmallTwig35" type="fixed">
+                        <origin xyz="0.31 -0.01 2.63"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_0_0_SmallTwig_35" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_0">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_0_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig0" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_0" />      
+                    <origin xyz="0.00 0.01 0.30" rpy="0.19 -0.18 -1.00" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_1_1_SmallTwig_1">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_1_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig1" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_1" />      
+                    <origin xyz="-0.03 0.18 2.69" rpy="0.15 -0.08 1.95" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_1_1_SmallTwig_2">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_2_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig2" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_2" />      
+                    <origin xyz="1.00 -0.01 0.99" rpy="0.12 0.71 -0.82" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_2">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig2" type="fixed">
+                        <origin xyz="1.00 -0.01 0.99"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_2" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_3">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_3_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig3" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_3" />      
+                    <origin xyz="0.60 0.27 1.31" rpy="0.19 -0.71 2.45" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_3">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig3" type="fixed">
+                        <origin xyz="0.60 0.27 1.31"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_3" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_4">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_4_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig4" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_4" />      
+                    <origin xyz="0.85 0.18 0.88" rpy="0.02 -0.39 -0.43" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_4">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig4" type="fixed">
+                        <origin xyz="0.85 0.18 0.88"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_4" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_5">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_5_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig5" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_5" />      
+                    <origin xyz="-0.54 -0.10 1.17" rpy="0.21 -1.26 2.73" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_5">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig5" type="fixed">
+                        <origin xyz="-0.54 -0.10 1.17"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_5" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_6">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_6_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig6" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_6" />      
+                    <origin xyz="-0.16 0.72 1.50" rpy="0.23 0.18 0.20" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_1_1_SmallTwig_7">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_7_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig7" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_7" />      
+                    <origin xyz="-0.54 0.59 0.99" rpy="0.21 0.75 0.64" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_7">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig7" type="fixed">
+                        <origin xyz="-0.54 0.59 0.99"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_7" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_8">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_8_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig8" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_8" />      
+                    <origin xyz="-0.04 -1.00 1.76" rpy="0.30 0.14 -0.21" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_1_1_SmallTwig_9">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_9_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig9" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_9" />      
+                    <origin xyz="0.21 -0.34 1.45" rpy="0.26 0.97 -0.49" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_9">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig9" type="fixed">
+                        <origin xyz="0.21 -0.34 1.45"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_9" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_10">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_10_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig10" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_10" />      
+                    <origin xyz="-0.50 -0.41 2.01" rpy="0.14 0.13 -2.02" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_1_1_SmallTwig_11">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_11_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig11" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_11" />      
+                    <origin xyz="0.01 -0.65 1.77" rpy="0.16 -0.16 1.22" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_1_1_SmallTwig_12">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_12_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig12" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_12" />      
+                    <origin xyz="0.40 0.69 1.72" rpy="0.03 0.70 0.31" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_12">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig12" type="fixed">
+                        <origin xyz="0.40 0.69 1.72"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_12" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_13">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_13_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig13" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_13" />      
+                    <origin xyz="-0.72 0.52 1.73" rpy="0.28 0.50 -2.64" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_13">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig13" type="fixed">
+                        <origin xyz="-0.72 0.52 1.73"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_13" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+                <link name="twig_link_1_1_SmallTwig_14">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_14_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig14" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_14" />      
+                    <origin xyz="0.04 -0.17 2.00" rpy="0.22 -0.09 0.47" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                <link name="twig_link_1_1_SmallTwig_15">
+                    <inertial>
+                        <mass value="0.018"/>
+                        <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                    </inertial>
+                    <visual name="visual_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig.obj" scale="1 1 1"/>
+                        </geometry>
+                        <material name="1_1_SmallTwig_15_green">
+                            <color rgba="0.30 0.43 0.19 1.0"/>
+                        </material>
+                    </visual>
+                    <collision name="collision_1_1_SmallTwig">
+                        <geometry>
+                            <mesh filename="twigs/tree_SmallTwig_collision.obj" scale="1 1 1"/>
+                        </geometry>
+                    </collision>
+                </link>
+                <joint name="twig_joint_1_1_SmallTwig15" type="spherical">
+                    <parent link="trunk" />
+                    <child link="twig_link_1_1_SmallTwig_15" />      
+                    <origin xyz="0.06 0.27 2.14" rpy="0.22 -0.38 -0.58" />
+                    <axis xyz="1 0 0" />
+                    <limit effort="1000.0" lower="-6.26573" upper="6.26573" velocity="2.0"/>
+                    <dynamics damping="0.1" friction="0.01"/>
+                </joint>
+            
+                    <link name="stem_link_1_1_SmallTwig_15">
+                        <inertial>
+                            <origin xyz="0 0 -0.02"/>
+                            <mass value="0.018"/>
+                            <inertia ixx="8.82e-6" ixy="0" ixz="0" iyy="8.82e-6" iyz="0" izz="8.82e-6" />
+                        </inertial>
+                    </link>
+                    <joint name="stem_joint_1_1_SmallTwig15" type="fixed">
+                        <origin xyz="0.06 0.27 2.14"/>
+                        <parent link="trunk" />
+                        <child link="stem_link_1_1_SmallTwig_15" />
+                        <axis xyz="1 0 0" />
+                    </joint>
+                
+</robot>
