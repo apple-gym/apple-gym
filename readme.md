@@ -7,6 +7,9 @@ A RL gym environment for picking apples from a tree with a fruit picking attache
   <img src="docs/picked.gif" height="210" />
   <img src="https://github.com/apple-gym/apple_gym/blob/main/docs/picked.gif?raw=true" height="410" /> 
 
+![](docs/simplescreenrecorder-2021-08-04_21.18.08.mkv.gif)
+![](docs/simplescreenrecorder-2021-08-04_21.22.33.mkv.gif)
+
 https://imgur.com/a/Vq2eXui
 
 # Setup

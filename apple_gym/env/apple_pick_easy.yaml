@@ -1,4 +1,4 @@
-max_episode_steps: 200
+max_episode_steps: 600
 action_repeat: 1
 
 plane:
