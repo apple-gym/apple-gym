@@ -2,13 +2,27 @@
 
 *Warning: This code is messy. It's not intended to be easy to run, and I probobly wont have time to help you run it. It's shared in the hope that it will help someone, but that someone will have to be a good python programmer. If you have problems, make a well documented issue. If you like it, please help make it better by submitting a PR or contributing docs.*
 
-A RL gym environment for picking apples from a tree with a fruit picking attachement
+A RL gym environment for picking apples from a tree with a fruit picking attachment.
 
 ![](docs/simplescreenrecorder-2021-08-04_21.18.08.mkv.gif)
 ![](docs/simplescreenrecorder-2021-08-04_21.22.33.mkv.gif)
 ![](docs/picked.gif)
 
 [more videos](https://imgur.com/a/Vq2eXui)
+
+# Features:
+
+- States:
+  - joint positions
+  - joint torque
+  - joint rotation
+  - base camera
+  - arm camera
+- action:
+  - joint torque
+- reward: for getting apples in picker attachement
+
+Physics: The branches are fixed. The leaves bend. The tree, leaves, and apples are in randomised positions with random colors.
 
 # Setup
 
